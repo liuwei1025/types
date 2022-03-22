@@ -25,9 +25,9 @@ class Either<TLeft, TRight> {
         return <TRight>this.value;
     }
 
-    // FIXME 此处不声明泛型会有什么影响
-    static makeLeft(value: TLeft) {
-        return new Either(value, true)
+    // Static members cannot reference class type parameters.
+    static makeLeft<TLeft, TRight>(value: TLeft) {
+        return new Either<TLeft, TRight>(value, true)
     }
 
     static makeRight<TLeft, TRight>(value: TRight) {
